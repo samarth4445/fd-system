@@ -10,6 +10,7 @@ const StoreContextProvider = (props) => {
   const [food_list, setFoodList] = useState([]);
   const [cartItems, setCartItems] = useState({});
   const [token, setToken] = useState("");
+  const [restaurant, setRestaurant] = useState(-1);
 
   const addToCart = async (itemId) => {
     if (!cartItems[itemId]) {
@@ -99,6 +100,8 @@ const StoreContextProvider = (props) => {
     setToken,
     loadCartData,
     setCartItems,
+    restaurant,
+    setRestaurant,
   };
 
   return (

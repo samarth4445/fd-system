@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 
-const PlaceOrder = () => {
+const PlaceOrder = ({}) => {
   const [data, setData] = useState({
     firstName: "",
     lastName: "",
@@ -19,8 +19,15 @@ const PlaceOrder = () => {
     phone: "",
   });
 
-  const { getTotalCartAmount, token, food_list, cartItems, url, setCartItems } =
-    useContext(StoreContext);
+  const {
+    getTotalCartAmount,
+    token,
+    food_list,
+    cartItems,
+    url,
+    setCartItems,
+    restaurant,
+  } = useContext(StoreContext);
 
   const navigate = useNavigate();
 
@@ -42,6 +49,7 @@ const PlaceOrder = () => {
     let orderData = {
       // address: data,
       order: orderItems,
+      restaurant: restaurant,
       // amount: getTotalCartAmount() + 5,
     };
     let response = await axios.post(
